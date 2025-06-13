@@ -10,32 +10,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <nav>
-        <a href="index.html" class="logo-link">
-            <div class="logo">MY PORTFOLIO</div>
-        </a>
-        <ul>
-            <li><a href="about.html" class="active">ABOUT</a></li>
-            <li><a href="skills.html">SKILLS</a></li>
-            <li><a href="projects.html">PROJECTS</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
-        </ul>
-    </nav>
-
+ <nav>
+    <a href="intro.html" class="logo-link">
+        <div class="logo">MY PORTFOLIO</div>
+    </a>
+    <ul>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="skills.html">SKILLS</a></li>
+        <li><a href="projects.html">PROJECTS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+</nav>
     <main>
         <section id="about" class="page-section">
             <h2>ABOUT ME</h2>
-            <p>이곳에 자기소개를 자유롭게 작성해주세요.</p>
-            <p>어떤 것을 좋아하고, 어떤 개발자가 되고 싶은지 등을 표현하면 좋습니다.</p>
+            <div class="info-container">
+                <div class="info-item" data-delay="0.5s">
+                    <span class="info-label">이름:</span> <span class="info-value">송민성</span>
+                </div>
+                <div class="info-item" data-delay="0.8s">
+                    <span class="info-label">나이:</span> <span class="info-value">2002.04.15 24세</span>
+                </div>
+                <div class="info-item" data-delay="1.1s">
+                    <span class="info-label">학력:</span> <span class="info-value">경성대학교 재학</span>
+                </div>
+            </div>
+            <p>안녕하십니까? 스포츠 마케터를 꿈꾸는 사람들에게 희망을 주고 싶은 마케터입니다.
+                절대 꿈을 접지 마시길 바랍니다.
+                열정이 있다면, 마음이 있다면 그것만으로도 원하시는 길을 갈 수 있다는걸 기억하시길 바랍니다.
+            </p>
         </section>
     </main>
-    
     <footer id="contact">
         <h2>CONTACT ME</h2>
         <p>Email: your.email@example.com</p>
         <p>Github: github.com/your-id</p>
     </footer>
-
-    </body>
+</body>
 </html>
