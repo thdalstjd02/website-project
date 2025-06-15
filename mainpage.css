@@ -80,59 +80,22 @@ footer { text-align: center; padding: 40px 20px; background-color: #000; }
 .slideshow-container {
     position: relative;
     width: 100%;
-    height: 50vh;
-    max-height: 550px;
+    height: 65vh;
+    max-height: 700px;
     overflow: hidden;
     border-radius: 8px;
-    background-color: #000; /* 이미지가 로드되기 전 또는 빈 공간의 배경색 */
+    background-color: #000;
 }
-/* mainpage.css */
-
-/* 기존의 .slide img 규칙은 지워주세요. */
-
-/* 새로운 스타일들 추가 */
-.slide {
-    display: none;
+.slide { 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+}
+.slideshow-img {
     width: 100%;
     height: 100%;
-    position: relative; /* 내부 이미지들의 위치 기준 */
-    overflow: hidden; /* 흐릿한 배경의 가장자리가 튀어나오지 않게 함 */
+    object-fit: contain; /* 이미지가 잘리지 않도록 설정 */
 }
-
-/* 배경용 이미지 스타일 (흐릿하고 꽉 차게) */
-.slide-bg-img {
-    position: absolute;
-    width: 110%; /* 가장자리의 흐릿한 부분이 어색하지 않게 약간 크게 */
-    height: 110%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    filter: blur(15px) brightness(0.5); /* 15px 정도 흐릿하게, 50% 어둡게 */
-}
-
-/* 전경용 이미지 스타일 (선명하고 잘리지 않게) */
-.slide-main-img {
-    position: relative;
-    z-index: 2;
-    /* 이미지 최대 크기를 95%로 키워 거의 꽉 차게 만듭니다 */
-    max-width: 95%;
-    max-height: 95%;
-    width: auto;
-    height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: contain; /* 이미지가 잘리지 않는 것은 유지 */
-}
-
-/* 이 부분을 더 구체적인 선택자로 수정했습니다 */
-.slideshow-container .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* 이미지가 잘리지 않고 모두 보이도록 설정 */
-}
-
 .fade { 
     animation-name: fade; 
     animation-duration: 1.5s; 
@@ -147,6 +110,97 @@ footer { text-align: center; padding: 40px 20px; background-color: #000; }
 /* ================= */
 .page-section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
 .page-section h2 { font-size: 3rem; margin-bottom: 40px; border-bottom: 3px solid #F97828; display: inline-block; padding-bottom: 10px; }
+
+/* About 페이지 스타일 */
+.intro-sentence {
+    font-size: 1.4rem; color: #cccccc; font-weight: 300; margin-top: -20px; margin-bottom: 50px; font-style: italic;
+}
+.profile-layout-container {
+    display: flex; align-items: center; gap: 50px; margin-top: 40px;
+    flex-wrap: wrap; justify-content: center;
+}
+.profile-image-container {
+    flex-shrink: 0;
+}
+.profile-picture {
+    width: 220px; height: 290px; object-fit: cover;
+    border: 4px solid #F97828; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+.profile-text-container {
+    max-width: 600px; text-align: left;
+}
+.info-container {
+    margin-bottom: 30px;
+}
+.info-label {
+    font-weight: bold; margin-right: 10px; color: #F97828;
+}
+.info-value {
+    font-size: 1.1rem;
+}
+.description-container {
+    max-width: 800px; margin: 40px auto 0 auto; text-align: left; line-height: 1.8;
+}
+.description-container p {
+    margin-bottom: 20px; color: #e0e0e0;
+}
+
+/* --- Skills 페이지 스타일 (최종 추천: 세로 정렬) --- */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* 각 카테고리 박스를 페이지 중앙에 정렬 */
+    gap: 50px;             /* 카테고리 사이의 간격 */
+}
+
+.skill-category {
+    width: 550px;          /* 모든 카테고리 박스의 너비를 통일 */
+    max-width: 90%;        /* 화면이 좁아질 때를 대비 */
+}
+
+.skill-category h3 {
+    color: #F97828;
+    margin-bottom: 20px;
+    text-align: center;    /* 소제목만 중앙 정렬 */
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;      /* 리스트 내용은 왼쪽 정렬 */
+}
+
+.skill-category ul li {
+    display: flex;
+    align-items: flex-start; /* 아이콘을 텍스트 상단에 정렬 */
+    margin-bottom: 18px;
+    font-size: 1.1rem;
+}
+
+.skill-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    margin-top: 3px;       /* 아이콘 위치 미세 조정 */
+    flex-shrink: 0; 
+}
+
+/* Qualifications 텍스트를 위한 스타일 */
+.qualification-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.qualification-title {
+    font-weight: 500;
+}
+
+.qualification-desc {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    margin-top: 4px;
+}
 
 /* 콘텐츠 등장 애니메이션 */
 .info-item, .skill-category, .project-card, .contact-item {
@@ -165,27 +219,3 @@ footer { text-align: center; padding: 40px 20px; background-color: #000; }
 .info-item:nth-child(1), .skill-category:nth-child(1), .project-card:nth-child(1), .contact-item:nth-child(1) { animation-delay: 0.3s; }
 .info-item:nth-child(2), .skill-category:nth-child(2), .project-card:nth-child(2), .contact-item:nth-child(2) { animation-delay: 0.6s; }
 .info-item:nth-child(3), .skill-category:nth-child(3), .project-card:nth-child(3), .contact-item:nth-child(3) { animation-delay: 0.9s; }
-/* --- About 페이지 콘텐츠 스타일 추가 --- */
-
-/* About 페이지 소개 문장 스타일 */
-.intro-sentence {
-    font-size: 1.4rem;
-    color: #cccccc;
-    font-weight: 300;
-    margin-top: -20px;
-    margin-bottom: 50px;
-    font-style: italic;
-}
-
-/* 상세 자기소개 문단 컨테이너 */
-.description-container {
-    max-width: 800px;
-    margin: 40px auto 0 auto; /* 위쪽 여백 추가 및 중앙 정렬 */
-    text-align: left; /* 긴 글은 왼쪽 정렬이 읽기 편합니다 */
-    line-height: 1.8; /* 줄 간격을 넉넉하게 */
-}
-
-.description-container p {
-    margin-bottom: 20px;
-    color: #e0e0e0;
-}
