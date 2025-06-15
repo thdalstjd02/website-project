@@ -11,34 +11,58 @@
 </head>
 <body>
 
-<nav>
-    <a href="intro.html" class="logo-link">
-        <div class="logo">HOME</div>
-    </a>
-    <ul>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="skills.html">SKILLS</a></li>
-        <li><a href="projects.html">PROJECTS</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-    </ul>
-</nav>
+    <nav>
+        <a href="intro.html" class="logo-link">
+            <div class="logo">HOME</div>
+        </a>
+        <ul>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="skills.html">SKILLS</a></li>
+            <li><a href="projects.html" class="active">PROJECTS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
 
     <main>
         <section id="projects" class="page-section">
             <h2>PROJECTS</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>시사저널 주관 스포츠 산업 실전 프로젝트</h3>
-                    <p>구단과의 협업을 통한 MD 상품 마케팅 기획</p>
+            
+            <div class="project-list-container">
+
+                <a href="https://www.sisajournal.com/news/articleView.html?idxno=328604" target="_blank" rel="noopener noreferrer" class="project-item" data-delay="0.3s">
+                    <div class="project-info">
+                        <span class="project-title">시사저널 주관 스포츠 산업 실전 프로젝트</span>
+                        <span class="project-category">구단 협업 MD 상품 마케팅 기획</span>
+                    </div>
+                    <div class="project-link-icon">→</div>
+                </a>
+
+                <div class="project-item project-trigger" data-delay="0.6s"
+                     data-title="대학교 스포츠 마케팅 동아리"
+                     data-links='[
+                         {"label": "경성대학교 스포츠 마케팅 동아리", "url": "https://www.instagram.com/busan_uni_sports_.news/"},
+                         {"label": "경성대학교 배구부 소식", "url": "https://www.instagram.com/kyungsung_spike/"}
+                     ]'>
+                    <div class="project-info">
+                        <span class="project-title">대학교 스포츠 마케팅 동아리</span>
+                        <span class="project-category">대학 스포츠 마케팅 동아리 디자인 컨펌</span>
+                    </div>
+                    <div class="project-link-icon">→</div>
                 </div>
-                <div class="project-card">
-                    <h3>대학교 스포츠 마케팅 동아리</h3>
-                    <p>대학 스포츠 마케팅 동아리 디자인 컨펌</p>
+
+                <div class="project-item project-trigger" data-delay="0.9s"
+                     data-title="대학 스포츠 연맹 주관 KUSF 본선 진출"
+                     data-links='[
+                         {"label": "KUSF 인스타그램", "url": "https://www.instagram.com/kusf_sport/"},
+                         {"label": "KUSF 공식 홈페이지", "url": "https://www.kusf.or.kr/"}
+                     ]'>
+                    <div class="project-info">
+                        <span class="project-title">대학 스포츠 연맹 주관 KUSF 본선 진출</span>
+                        <span class="project-category">스포츠 실전 경험</span>
+                    </div>
+                    <div class="project-link-icon">→</div>
                 </div>
-                <div class="project-card">
-                    <h3>대학 스포츠 연맹 주관 KUSF 본선 진출</h3>
-                    <p>스포츠에 대한 실전 경험</p>
-                </div>
+
             </div>
         </section>
     </main>
@@ -48,6 +72,65 @@
         <p>Email: kevin415@naver.com</p>
         <p>Instagram : m__xn.g</p>
     </footer>
+
+    <div id="link-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h4 id="modal-title"></h4> <div id="modal-links" class="modal-links">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // 공통으로 사용할 요소들
+        const modal = document.getElementById("link-modal");
+        const modalTitle = document.getElementById("modal-title");
+        const modalLinks = document.getElementById("modal-links");
+        const closeBtn = document.getElementsByClassName("close-button")[0];
+
+        // 팝업창을 여는 모든 프로젝트 항목들을 찾음
+        const triggers = document.querySelectorAll(".project-trigger");
+
+        // 각 트리거에 클릭 이벤트를 추가
+        triggers.forEach(trigger => {
+            trigger.style.cursor = 'pointer'; // 클릭 가능하게 커서 모양 변경
+            trigger.onclick = function() {
+                // 1. 클릭된 항목의 제목과 링크 데이터를 가져옴
+                const title = this.dataset.title;
+                const links = JSON.parse(this.dataset.links);
+
+                // 2. 팝업창 내용 초기화
+                modalTitle.textContent = title + " 관련 링크";
+                modalLinks.innerHTML = ""; // 기존 버튼들 삭제
+
+                // 3. 가져온 링크 데이터로 새로운 버튼들 생성
+                links.forEach(linkInfo => {
+                    const a = document.createElement('a');
+                    a.href = linkInfo.url;
+                    a.textContent = linkInfo.label;
+                    a.className = 'link-button';
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    modalLinks.appendChild(a);
+                });
+
+                // 4. 팝업창을 보여줌
+                modal.style.display = "block";
+            }
+        });
+
+        // X 버튼을 클릭하면 팝업창을 닫음
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // 팝업창 바깥의 어두운 영역을 클릭하면 팝업창을 닫음
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
