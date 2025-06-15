@@ -7,35 +7,77 @@
     <link rel="stylesheet" href="mainpage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav>
-    <a href="intro.html" class="logo-link">
-        <div class="logo">MY PORTFOLIO</div>
-    </a>
-    <ul>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="skills.html">SKILLS</a></li>
-        <li><a href="projects.html">PROJECTS</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-    </ul>
-</nav>
+        <a href="intro.html" class="logo-link">
+            <div class="logo">HOME</div>
+        </a>
+        <ul>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="skills.html">SKILLS</a></li>
+            <li><a href="projects.html">PROJECTS</a></li>
+            <li><a href="contact.html" class="active">CONTACT</a></li>
+        </ul>
+    </nav>
 
     <main>
         <section id="contact-page" class="page-section">
-            <h2>GET IN TOUCH</h2>
-            <p>아래 연락처 또는 깃헙을 통해 언제든지 편하게 연락주세요.</p>
-            <p>함께 성장할 기회를 기다립니다!</p>
+            <h2>Ask Everything</h2>
+
+            <div class="typing-container">
+                <p id="typing-text"></p>
+            </div>
+
         </section>
     </main>
-    
+
     <footer id="contact">
         <h2>CONTACT ME</h2>
-        <p>Email: your.email@example.com</p>
-        <p>Github: github.com/your-id</p>
+        <p>Email: kevin415@naver.com</p>
+        <p>Instagram: m__xn.g</p>
     </footer>
+
+    <script>
+        // 화면에 보여줄 문구들 배열 (요청하신 문구로 교체)
+        const messages = [
+            "스포츠 마케터를 꿈꾸고 있으시다면 언제든지 연락해주시길 바랍니다.",
+            "함께 꿈에 도달할 그날까지 도와드리겠습니다!"
+        ];
+
+        // 타이핑 텍스트 요소 가져오기
+        const typingText = document.getElementById('typing-text');
+
+        // 현재 보여주고 있는 문구의 순서 (index)
+        let currentIndex = 0;
+
+        function cycleText() {
+            // 1. 현재 텍스트를 서서히 사라지게 함
+            typingText.style.opacity = 0;
+
+            // 2. 텍스트가 사라지는 시간(700ms)을 기다린 후 내용 변경
+            setTimeout(() => {
+                // 다음 문구로 순서 변경 (배열의 끝에 도달하면 다시 처음으로)
+                currentIndex = (currentIndex + 1) % messages.length;
+                
+                // 텍스트 내용 교체
+                typingText.textContent = messages[currentIndex];
+
+                // 3. 변경된 텍스트를 서서히 나타나게 함
+                typingText.style.opacity = 1;
+
+            }, 700); // CSS의 transition 시간과 일치시키는 것이 좋음
+        }
+
+        // 페이지가 처음 로드되었을 때 첫 번째 문구를 보여줌
+        typingText.textContent = messages[0];
+        typingText.style.opacity = 1;
+
+        // 5초(5000ms)마다 cycleText 함수를 실행하여 문구를 무한 반복
+        setInterval(cycleText, 5000); 
+    </script>
 
 </body>
 </html>

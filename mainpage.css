@@ -366,3 +366,186 @@ footer { text-align: center; padding: 40px 20px; background-color: #000; }
     background-color: #f0f0f0;
     transform: scale(1.05);
 }
+/* mainpage.css */
+
+/* mainpage.css */
+
+/* mainpage.css 파일에 이 코드가 있는지 확인 또는 추가하세요 */
+
+.typing-container {
+    padding: 20px;
+    min-height: 100px; /* 레이아웃 흔들림 방지 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#typing-text {
+    font-size: 1.5rem;
+    color: #F97828;
+    font-weight: 500;
+    text-align: center; /* 텍스트가 중앙에 오도록 추가 */
+    white-space: normal; /* 텍스트가 길 경우 줄바꿈이 되도록 변경 */
+    word-break: keep-all; /* 단어 단위로 줄바꿈하여 가독성 향상 */
+    
+    /* 부드러운 등장/사라짐 효과를 위한 transition */
+    transition: opacity 0.7s ease-in-out; 
+    
+    /* 부드러운 무한 플로팅 애니메이션 적용 */
+    animation: gentleFloat 5s ease-in-out infinite;
+}
+
+/* 텍스트가 계속 부드럽게 떠다니는 애니메이션 */
+@keyframes gentleFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+/* ================= */
+/* ================= */
+/* 5. 음악 플레이어 스타일 (작은 정사각형 + 하이큐!! 테마) */
+/* ================= */
+#music-player {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 180px; /* 수정: 작은 정사각형 너비 */
+    height: 180px; /* 수정: 작은 정사각형 높이 */
+    background-color: rgba(30, 30, 30, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: #f0f0f0;
+    padding: 15px; /* 수정: 내부 여백 */
+    border-radius: 12px; /* 수정: 모서리 둥글기 */
+    display: flex;
+    flex-direction: column; /* 세로 정렬 유지 */
+    align-items: center; /* 가운데 정렬 */
+    justify-content: space-between; /* 요소들을 적절히 분배 */
+    gap: 8px; /* 요소 간 간격 감소 */
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 1. 앨범 아트 */
+#album-art {
+    width: 80%; /* 앨범 아트 크기 조정 */
+    aspect-ratio: 1 / 1;
+    border-radius: 8px; /* 수정: 모서리 둥글기 */
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+#track-artwork {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 2. 트랙 정보 */
+.track-info {
+    text-align: center;
+    width: 100%;
+}
+#track-title {
+    font-size: 0.9rem; /* 수정: 폰트 크기 줄임 */
+    font-weight: 700;
+    margin: 5px 0 2px 0; /* 수정: 여백 줄임 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#track-artist {
+    font-size: 0.7rem; /* 수정: 폰트 크기 줄임 */
+    color: #aaa;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* 3. 재생 진행률 표시줄 */
+#progress-bar-container {
+    width: 80%; /* 진행률 표시줄 너비 조정 */
+    height: 3px; /* 수정: 높이 줄임 */
+    background-color: #444;
+    border-radius: 1.5px;
+    cursor: pointer;
+}
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #F97828;
+    border-radius: 1.5px;
+}
+
+/* mainpage.css */
+
+/* 4. 재생 컨트롤 버튼 */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 2px 0;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: #F97828; /* 수정: 기본 색상을 주황색으로 변경 */
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 3px;
+}
+
+.controls button:hover {
+    color: #ffffff; /* 수정: 마우스를 올리면 흰색으로 바뀌도록 변경 */
+}
+
+/* 5. 볼륨 컨트롤 */
+.volume-controls {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* 수정: 간격 줄임 */
+}
+.volume-controls #mute-btn {
+    background: none; border: none; color: #aaa;
+    font-size: 0.8rem; cursor: pointer; transition: color 0.2s ease;
+    padding: 3px; /* 수정: 버튼 패딩 줄임 */
+}
+.volume-controls #mute-btn:hover { color: #fff; }
+
+#volume-slider {
+    -webkit-appearance: none; appearance: none;
+    flex-grow: 1;
+    height: 3px; /* 수정: 슬라이더 높이 줄임 */
+    background: #444;
+    border-radius: 1.5px; outline: none; cursor: pointer;
+}
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 10px; height: 10px; background: #f0f0f0;
+    border-radius: 50%; cursor: pointer; transition: background 0.2s ease;
+}
+#volume-slider::-webkit-slider-thumb:hover {
+    background: #F97828;
+}
+#volume-slider::-moz-range-thumb {
+    width: 10px; height: 10px; background: #f0f0f0;
+    border-radius: 50%; cursor: pointer; border: none;
+}
+
+/* 유튜브 플레이어(iframe) 숨기기 */
+#youtube-player {
+    position: absolute; top: -9999px; left: -9999px;
+    width: 1px; height: 1px; opacity: 0;
+}
