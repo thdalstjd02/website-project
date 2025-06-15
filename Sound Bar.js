@@ -19,8 +19,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 재생 목록
 const playlist = [
-    'https://youtu.be/VKviyEGvb94?si=bFRUvmt8dsEYf-g-',
     'https://youtu.be/PYUxvyZ6uc0?si=84Y3Re6saQ4Rg4AX',
+    'https://youtu.be/VKviyEGvb94?si=bFRUvmt8dsEYf-g-',
     'https://youtu.be/_oGEhRZkwcg?si=zogcYgPLqxOYiw0q'
 ];
 
@@ -45,7 +45,7 @@ window.onYouTubeIframeAPIReady = function() {
 async function onPlayerReady(event) {
     await loadTrack(currentTrackIndex);
     // player.setVolume(100); // 이 줄은 제거합니다.
-    player.setVolume(50); // 초기 볼륨을 50으로 설정
+    player.setVolume(10); // 초기 볼륨을 50으로 설정
     volumeSlider.value = 50; // 슬라이더 값도 50으로 설정
     updateMuteButtonIcon();
 }
