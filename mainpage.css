@@ -98,7 +98,7 @@ footer { text-align: center; padding: 40px 20px; background-color: #000; }
 }
 .fade { 
     animation-name: fade; 
-    animation-duration: 1.5s; 
+    animation-duration: 0.75s; 
 }
 @keyframes fade { 
     from {opacity: .4} 
@@ -548,4 +548,84 @@ footer { text-align: center; padding: 40px 20px; background-color: #000; }
 #youtube-player {
     position: absolute; top: -9999px; left: -9999px;
     width: 1px; height: 1px; opacity: 0;
+}
+/* 금가루 콘페티 효과 */
+.gold-confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999; /* 다른 요소 위에 표시 */
+    pointer-events: none; /* 마우스 이벤트 무시 */
+    overflow: hidden; /* 콘페티가 밖으로 나가지 않도록 숨김 */
+}
+
+.confetti-particle {
+    position: absolute;
+    background-color: gold; /* 기본 금색 */
+    opacity: 0;
+    animation: goldConfettiFall linear infinite;
+}
+
+/* 다양한 크기와 모양의 금가루 */
+.confetti-particle:nth-child(3n+1) {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%; /* 원형 */
+    background: radial-gradient(circle at 30% 30%, #FFD700, #DAA520); /* 조금 더 입체적인 금색 */
+}
+
+.confetti-particle:nth-child(3n+2) {
+    width: 8px;
+    height: 3px;
+    transform: rotate(45deg); /* 직사각형 */
+    background: linear-gradient(to right, #FFD700, #B8860B); /* 밝고 어두운 금색 */
+}
+
+.confetti-particle:nth-child(3n+3) {
+    width: 6px;
+    height: 6px;
+    transform: rotate(15deg); /* 사각형 */
+    background: #FFEC8B; /* 좀 더 밝은 금색 */
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* 반짝이는 효과 */
+}
+
+/* 콘페티 떨어지는 애니메이션 */
+@keyframes goldConfettiFall {
+    0% {
+        transform: translateY(-10vh) translateX(calc(var(--random-x) * 100vw)) rotateZ(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) translateX(calc(var(--random-x) * 100vw + var(--drift-x) * 10px)) rotateZ(720deg);
+        opacity: 0;
+    }
+}
+body {
+    background-color: #121212;
+    color: #FFFFFF;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+
+    /* Sticky Footer를 위한 Flexbox 설정 */
+    display: flex; /* body를 flex 컨테이너로 만듭니다 */
+    flex-direction: column; /* 자식 요소들을 세로로 정렬합니다 */
+    min-height: 100vh; /* 뷰포트 높이의 최소 100%를 차지하게 합니다 */
+}
+
+main {
+    flex-grow: 1; /* main 콘텐츠 영역이 사용 가능한 공간을 모두 차지하도록 합니다 */
+}
+
+/* 기존 footer 스타일은 그대로 유지 */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #000;
+    /* position: fixed; bottom: 0; left: 0; width: 100%; /* 이 부분은 제거하거나 주석 처리 */
 }

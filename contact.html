@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="gold-confetti" id="goldConfettiContainer"></div>
 
     <nav>
         <a href="intro.html" class="logo-link">
@@ -44,7 +45,10 @@
         // 화면에 보여줄 문구들 배열 (요청하신 문구로 교체)
         const messages = [
             "스포츠 마케터를 꿈꾸고 있으시다면 언제든지 연락해주시길 바랍니다.",
-            "함께 꿈에 도달할 그날까지 도와드리겠습니다!"
+            "함께 꿈에 도달할 그날까지 도와드리겠습니다!",
+            "여러분들도 반드시 꿈을 이루는 날이 올 것입니다.",
+            "절대 꿈을 포기하지 마시길 바랍니다.",
+            "The Dream Will Be Reality"
         ];
 
         // 타이핑 텍스트 요소 가져오기
@@ -79,5 +83,6 @@
         setInterval(cycleText, 5000); 
     </script>
 
-</body>
+    <script src="confetti.js" defer></script> 
+    </body>
 </html>

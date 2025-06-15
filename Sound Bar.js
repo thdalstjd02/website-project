@@ -37,15 +37,16 @@ let player, currentTrackIndex = 0, isPlaying = false, progressInterval;
 
 window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player('youtube-player', {
-        height: '1', width: '1', playerVars: { 'playsinline': 1, 'controls': 0 },
+        height: '1', width: '1', playerVars: { 'playsinline': 1, 'controls': 0, 'volume': 50 }, // 초기 볼륨을 50으로 설정
         events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
     });
 }
 
 async function onPlayerReady(event) {
     await loadTrack(currentTrackIndex);
-    player.setVolume(100);
-    volumeSlider.value = 100;
+    // player.setVolume(100); // 이 줄은 제거합니다.
+    player.setVolume(50); // 초기 볼륨을 50으로 설정
+    volumeSlider.value = 50; // 슬라이더 값도 50으로 설정
     updateMuteButtonIcon();
 }
 
@@ -74,11 +75,11 @@ async function loadTrack(trackIndex) {
     try {
         // <<< UPDATED! 오류가 있었던 주소를 올바르게 수정했습니다. >>>
         const response = await fetch(`https://noembed.com/embed?url=${encodeURIComponent(trackUrl)}`);
-        
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         const data = await response.json();
 
         // data.error가 있는 경우 (예: 비공개 영상) 처리
@@ -101,7 +102,7 @@ async function loadTrack(trackIndex) {
         console.error('트랙 로딩 중 에러 발생:', error);
         trackTitle.textContent = '재생할 수 없음';
         trackArtist.textContent = '링크를 확인해주세요.';
-        trackArtwork.src = 'https://via.placeholder.com/180?text=Error'; 
+        trackArtwork.src = 'https://via.placeholder.com/180?text=Error';
     }
 }
 
